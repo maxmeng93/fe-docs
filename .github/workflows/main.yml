@@ -1,0 +1,42 @@
+name: Deploy To Server
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [12.x]
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@master
+      with:
+        submodules: true # Checkout private submodules(themes or something else).
+
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: npm install, build, and test
+      run: |
+        yarn
+        yarn run docs:build
+    - name: deploy file to server
+      uses: appleboy/scp-action@master
+      with:
+        host: ${{ secrets.SERVER_IP }}
+        username: 'root'
+        port: 22
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        rm: true
+        source: './docs/.vitepress/dist/*'
+        target: '/www/fe-docs.maxmeng.top'
+        strip_components: 1
+        command_timeout: 30m
