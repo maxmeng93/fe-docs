@@ -36,7 +36,7 @@ jobs:
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         port: 22
         rm: true
-        source: 'docs/.vitepress/dist/*'
+        source: './docs/.vitepress/dist/*'
         target: '/www/fe-docs.maxmeng.top'
         strip_components: 1
         command_timeout: 30m
