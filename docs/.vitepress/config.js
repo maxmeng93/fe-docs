@@ -1,5 +1,5 @@
 module.exports = {
-  base: '/',
+  base: '/fe-docs/',
   lang: 'zh-CN',
   title: '前端小册',
   description: '前端小册',

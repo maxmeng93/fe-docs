@@ -38,5 +38,5 @@ jobs:
         rm: true
         source: './docs/.vitepress/dist/*'
         target: '/www/fe-docs.maxmeng.top'
-        strip_components: 2
+        strip_components: 3
         command_timeout: 30m
