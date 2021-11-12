@@ -31,7 +31,7 @@ module.exports = {
         {
           text: 'babel',
           children: [
-            { text: 'babel小抄', link: '/engineering/babel/' },
+            { text: 'babel7小抄', link: '/engineering/babel/' },
           ]
         },
         // {

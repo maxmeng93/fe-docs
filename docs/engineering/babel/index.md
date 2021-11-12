@@ -7,6 +7,36 @@
 - 源码转换（`codemods`、`jscodeshift`）
 - 静态分析（`lint`、根据注释生成 `API` 文档等）
 
+Babel 最主要的配置是 `presets`（预设）和 `plugins`（插件），当多个插件或预设处理同一个代码块时，会根据配置中的顺序执行。规则如下：
+
+- 插件比预设先运行
+- 插件从前往后执行
+- 预设从后往前执行
+
+## @babel/cli
+
+`Babel` 附带的命令行工具，可以从命令行执行编译文件
+
+## @babel/core
+
+`Babel` 核心模块。
+
+## @babel/preset-env
+
+这是一个智能预设，允许你使用最新的 `JavaScript`，并根据你设置的目标环境，执行代码转译。
+
+支持的主要参数有：
+
+### target
+
+项目支持的目标环境，建议使用 browserslist 代替此参数来指定环境。
+
+### useBuiltIns
+
+此选项配置如何处理 polyfill。
+
+### corejs
+
 ## 最小化配置
 
 创建一个项目，并安装依赖：
