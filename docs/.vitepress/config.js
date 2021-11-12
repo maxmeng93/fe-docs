@@ -3,6 +3,9 @@ module.exports = {
   lang: 'zh-CN',
   title: '前端小册',
   description: '前端小册',
+  markdown: {
+    lineNumbers: false,
+  },
   themeConfig: {
     repo: 'maxmeng93',
     displayAllHeaders: true,
