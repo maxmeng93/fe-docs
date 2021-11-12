@@ -1,3 +1,3 @@
 TypeScript
 
-![img](/images/favicon.ico)
+![img](/images/logo.jpg)
