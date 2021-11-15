@@ -19,13 +19,29 @@ Babel 最主要的配置是 `presets`（预设）和 `plugins`（插件），当
 
 ## @babel/core
 
-`Babel` 核心模块。
+## @babel/polyfill
+
+babel 默认只转换语法，而不转换 API，对于 Iterator、Generator、Set、Maps、Proxy、Reflect、Symbol、Promise 等全局对象，以及一些定义在全局对象上的方法(比如 Object.assign)都不会转码。因此需要 `Polyfill` 来为这些新特性提供支持。
+
+从 Babel 7.4.0 开始，这个包已经被弃用。可以直接引入 `core-js/stable` `regenerator-runtime/runtime` 这两个包来实现相同的功能。
+
+还可以通过 `@babel/preset-env` 和 `useBuiltIns: usage` 参数，来实现 Polyfill 自动引入。
+
+## @babel/runtime
+
+Babel 转译后的代码要实现源代码同样的功能需要借助一些帮助函数，这些帮助函数可能重复出现在一些模块中，导致编译后文件体积变大，为了解决这个问题，提供了单独的包 `@babel/runtime` 供编译模块复用工具函数。
+
+启用插件 `@babel/plugin-transform-runtime` 后，`Babel` 就会使用 `@babel/runtime` 下的工具函数。
+
+## @babel/plugin-transform-runtime
+
+是对 Babel 编译过程中产生的 helper 方法进行重新利用(聚合)，以达到减少打包体积的目的。此外还有个作用是为了避免全局补丁污染，对打包过的 bundler 提供"沙箱"式的补丁。
 
 ## @babel/preset-env
 
-这是一个智能预设，允许你使用最新的 `JavaScript`，并根据你设置的目标环境，执行代码转译。
+这是一个智能预设，依赖 `browserslist`, `compat-table`（这个库维护着每个特性在不同环境的支持情况）, `electron-to-chromium` 实现了特性的精细按需引入。
 
-支持的主要参数有：
+支持的主要参数有：`target`、`useBuiltIns`、`corejs` 等：
 
 ### target
 
@@ -33,9 +49,17 @@ Babel 最主要的配置是 `presets`（预设）和 `plugins`（插件），当
 
 ### useBuiltIns
 
-此选项配置如何处理 polyfill。
+此选项配置如何处理 `polyfill`。可选值有:
+
+- `false` 不做 polyfill
+- `entry` 考虑目标环境缺失的 API 模块, 引入相关的 API 补齐模块(polyfill)
+- `usage` 除了会考虑目标环境缺失的 API 模块，同时考虑我们项目代码里使用到的 ES6 特性。只有我们使用到的 ES6 特性 API 在目标环境缺失的时候，Babel 才会引入 core-js 的 API 补齐模块。usage 不需要我们在入口文件（以及 webpack 的 entry 入口项）引入 polyfill，Babel 发现 useBuiltIns 的值是"usage"后，会自动进行 polyfill 的引入源代码。
 
 ### corejs
+
+此配置可以是任何受支持的 `core-js` 版本。此配置只有在与 `useBuiltIns: usage` 或 `useBuiltIns: entry` 一起使用时才有效，可以确保 `@babel/preset-env` 注入你指定版本的 `core-js`。
+
+建议指定次要版本，否则 `3` 将被解释为 `3.0` 可能不包含最新的 polyfill。
 
 ## 最小化配置
 
