@@ -27,7 +27,7 @@ jobs:
     - name: npm install, build, and test
       run: |
         yarn
-        yarn run docs:build
+        yarn run build
     - name: deploy file to server
       uses: appleboy/scp-action@master
       with:
