@@ -7,9 +7,12 @@ module.exports = {
     lineNumbers: false,
   },
   themeConfig: {
-    repo: 'maxmeng93',
-    displayAllHeaders: true,
-    lastUpdated: 'Last Updated',
+    repo: 'maxmeng93/fe-docs',
+    docsDir: 'docs',
+    docsBranch: 'master',
+    editLinks: true,
+    editLinkText: '帮助改善此页面',
+    lastUpdated: '最后更新时间',
     nav: [
       {
         text: '首页',
@@ -17,7 +20,7 @@ module.exports = {
       },
       {
         text: '前端工程化',
-        link: '/engineering/babel/',
+        link: '/engineering/ast/',
         activeMatch: '^/engineering/'
       },
       // {
