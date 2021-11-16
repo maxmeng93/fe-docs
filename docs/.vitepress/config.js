@@ -29,9 +29,14 @@ module.exports = {
     sidebar: {
       '/engineering/': [
         {
+          text: 'AST',
+          link: '/engineering/ast/'
+        },
+        {
           text: 'babel',
           children: [
             { text: 'babel7小抄', link: '/engineering/babel/' },
+            { text: '写一个 Babel 插件', link: '/engineering/babel/create_plugin' },
           ]
         },
         // {

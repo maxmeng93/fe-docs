@@ -1,3 +1,7 @@
+---
+title: babel7 小抄
+---
+
 ## What is Babel?
 
 `Babel` 是一个工具链，主要用于将采用 `ECMAScript` 2015+ 语法编写的代码转换为向后兼容的 `JavaScript` 语法，以便能够运行在当前和旧版本的浏览器或其他环境中，`Babel` 可以做下面几件事：
@@ -7,7 +11,7 @@
 - 源码转换（`codemods`、`jscodeshift`）
 - 静态分析（`lint`、根据注释生成 `API` 文档等）
 
-Babel 最主要的配置是 `presets`（预设）和 `plugins`（插件），当多个插件或预设处理同一个代码块时，会根据配置中的顺序执行。规则如下：
+我们配置 `presets`（预设，一组插件）和 `plugins`（插件）来告诉 `Babel` 要做什么，当多个插件或预设处理同一个代码块时，会根据配置中的顺序执行。规则如下：
 
 - 插件比预设先运行
 - 插件从前往后执行
@@ -18,6 +22,8 @@ Babel 最主要的配置是 `presets`（预设）和 `plugins`（插件），当
 `Babel` 附带的命令行工具，可以从命令行执行编译文件
 
 ## @babel/core
+
+是我们使用 Bable 进行转码的核心 npm 包，我们使用的 babel-cli、babel-node 都依赖这个包，因此我们在前端开发的时候，都需要安装这个包。
 
 ## @babel/polyfill
 
@@ -60,6 +66,16 @@ Babel 转译后的代码要实现源代码同样的功能需要借助一些帮�
 此配置可以是任何受支持的 `core-js` 版本。此配置只有在与 `useBuiltIns: usage` 或 `useBuiltIns: entry` 一起使用时才有效，可以确保 `@babel/preset-env` 注入你指定版本的 `core-js`。
 
 建议指定次要版本，否则 `3` 将被解释为 `3.0` 可能不包含最新的 polyfill。
+
+## @babel 系列包
+
+`Babel` 是一个 `monorepo` 项目，`packages` 下面有一百多个包。
+
+@babel/plugin-xx，满足这种标记的包都是 Babel 插件。主要用来加强 transform，parser 能力。plugins 主要有三种类型：
+
+1. babel-plugin-transform-xx：转换插件，主要用来加强转换能力。
+2. babel-plugin-syntax-xx：主要是扩展编译能力。
+3. babel-plugin-proposal-xx：用来编译和转换在提案中的属性。
 
 ## 最小化配置
 
@@ -118,3 +134,11 @@ yarn add -D @babel/cli @babel/core @babel/plugin-transform-runtime @babel/preset
   "dependencies": {}
 }
 ```
+
+最小化配置的示例 demo 完整代码，可以点击[这里](https://github.com/maxmeng93/babel-demo/tree/esnext)查看。
+
+## 参考资料
+
+- Babel 中文官网：https://www.babeljs.cn/docs/
+- Babel Plugins List：https://www.babeljs.cn/docs/plugins-list
+- 不可多得的 Babel 小抄：https://mp.weixin.qq.com/s/lVd-kXDUH7kSwkYQEvQO4Q
