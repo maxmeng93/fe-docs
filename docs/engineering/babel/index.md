@@ -21,10 +21,6 @@ title: babel7 小抄
 
 `Babel` 附带的命令行工具，可以从命令行执行编译文件
 
-## @babel/core
-
-是我们使用 Bable 进行转码的核心 npm 包，我们使用的 babel-cli、babel-node 都依赖这个包，因此我们在前端开发的时候，都需要安装这个包。
-
 ## @babel/polyfill
 
 babel 默认只转换语法，而不转换 API，对于 Iterator、Generator、Set、Maps、Proxy、Reflect、Symbol、Promise 等全局对象，以及一些定义在全局对象上的方法(比如 Object.assign)都不会转码。因此需要 `Polyfill` 来为这些新特性提供支持。
@@ -76,6 +72,30 @@ Babel 转译后的代码要实现源代码同样的功能需要借助一些帮�
 1. babel-plugin-transform-xx：转换插件，主要用来加强转换能力。
 2. babel-plugin-syntax-xx：主要是扩展编译能力。
 3. babel-plugin-proposal-xx：用来编译和转换在提案中的属性。
+
+### @babel/core
+
+是我们使用 Bable 进行转码的核心 npm 包，我们使用的 babel-cli、babel-node 都依赖这个包，因此我们在前端开发的时候，都需要安装这个包。
+
+### @babel/parser
+
+Babel 解析器（以前称为 Babylon）是 Babel 中使用的 JavaScript 解析器。
+
+### @babel/traverse
+
+维护了 AST 的状态，与 @babel/parser 一起使用来遍历和更新节点。
+
+### @babel/types
+
+是一个用于 AST 节点的函数工具库，它包含了构造、验证及变换 AST 节点的方法，对编写处理 AST 逻辑非常有用。
+
+### @babel/generator
+
+将 AST 转换为代码
+
+### @babel/template
+
+这个模块可以让你编写字符串形式且带有占位符的代码来代理手动编码。
 
 ## 最小化配置
 
