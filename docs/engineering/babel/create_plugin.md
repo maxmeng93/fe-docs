@@ -2,9 +2,9 @@
 title: 写一个 Babel 插件
 ---
 
-通过一个 🌰，来学习
-
 ## 前言
+
+通过一个简单的 🌰，来学习如何写一个 Babel 插件。
 
 本文是 Babel 进阶内容，浏览之前要对 babel 的使用、生态和基本原理有过一定的了解。Babel 插件本质是修改 AST，因此也要对 AST 有一定的认识。
 
@@ -183,7 +183,9 @@ if (parent.type === 'FunctionDeclaration') {
 
 可以看到 `template` 将旧的写法大大的简化了。你可以将 `template` 看作是函数，它可以设置占位符，然后通过传入的参数，来填充占位符。此处不展开讲解，有兴趣的可以查看[文档](https://babel.docschina.org/docs/en/babel-template/)。
 
-现在一个插件的功能就写完了。执行命令 `yarn build`，查看生成的代码是否符合预期。文章中的代码已经上传[GitHub](https://github.com/maxmeng93/babel-plugin-any)，需要的自取。
+现在一个插件的功能就写完了。执行命令 `yarn build`，查看生成的代码是否符合预期。
+
+文章中的代码已经上传[GitHub](https://github.com/maxmeng93/babel-plugin-any)，需要的自取。
 
 ## 参考资料
 
