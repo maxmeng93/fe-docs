@@ -154,7 +154,7 @@ interface Node {
 
 ### 词法分析
 
-词法分析阶段把字符串形式的代码转换为令牌（tokens）流。
+词法分析阶段把字符串形式的代码转换为 tokens（词法单元）流。
 你可以把令牌看作是一个扁平的语法片段数组。
 
 ```js
@@ -192,3 +192,10 @@ a + b;
 ### 语法分析
 
 语法分析阶段会把一个令牌流转换成 AST 的形式。 这个阶段会使用令牌中的信息把它们转换成一个 AST 的表述结构，这样更易于后续的操作。
+
+![babel工作流](./babel.jpeg)
+
+## 参考资料
+
+- AST 详解与运用：https://zhuanlan.zhihu.com/p/266697614
+- ESTree AST 规范：https://github.com/estree/estree
