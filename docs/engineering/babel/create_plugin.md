@@ -183,9 +183,64 @@ if (parent.type === 'FunctionDeclaration') {
 
 可以看到 `template` 将旧的写法大大的简化了。你可以将 `template` 看作是函数，它可以设置占位符，然后通过传入的参数，来填充占位符。此处不展开讲解，有兴趣的可以查看[文档](https://babel.docschina.org/docs/en/babel-template/)。
 
-现在一个插件的功能就写完了。执行命令 `yarn build`，查看生成的代码是否符合预期。
+## 测试
 
-文章中的代码已经上传[GitHub](https://github.com/maxmeng93/babel-plugin-any)，需要的自取。
+现在一个插件的功能就写完了。还需要写一些测试用例来检查插件是否按照预期来工作。
+
+先安装测试所需的依赖：
+
+```bash
+yarn add -D jest babel-plugin-tester
+```
+
+在 `test` 文件夹下新建 `index.test.js` 文件。
+
+```js
+import * as path from 'path';
+import plugin from '../src/index';
+import pluginTester from 'babel-plugin-tester';
+
+pluginTester({
+  plugin: plugin,
+  fixtures: path.join(__dirname, '__fixtures__'),
+});
+```
+
+然后在 `test` 文件夹下新建 `__fixtures__` 文件夹，这里写具体的测试用例。
+
+比如要测试 `sum(1, 2)`，这个函数调用表达式是否能按照预期转换成 `sum([1, 2])`。在 `__fixtures__` 下新建 `callExpression` 文件夹（这里名字随便起，要能表现出要测试的功能点），在这个文件夹下新建 `code.js` 和 `output.js`，这两个文件夹分别对应输入的代码和输出的代码。
+
+```js
+// code.js
+sum(1, 2);
+sum(1, 2, 3);
+```
+
+```js
+// output.js
+sum([1, 2]);
+sum([1, 2, 3]);
+```
+
+最后执行命令 `yarn test`，如果 babel 转换后的代码和 `output.js` 文件中的代码一样，则测试通过。执行测试命令后，控制台会输出如下内容：
+
+```
+yarn run v1.22.17
+$ jest
+ PASS  test/index.test.js
+  unknown plugin fixtures
+    ✓ callExpression (174 ms)
+    ✓ functionDeclaration (23 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       2 passed, 2 total
+Snapshots:   0 total
+Time:        1.092 s
+Ran all test suites.
+✨  Done in 2.07s.
+```
+
+现在一个简单的 `Babel` 插件就写完了。文章中的代码已经上传 [GitHub](https://github.com/maxmeng93/babel-plugin-any)，需要的自取。
 
 ## 参考资料
 
