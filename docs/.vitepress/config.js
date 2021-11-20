@@ -20,7 +20,7 @@ module.exports = {
       },
       {
         text: '前端工程化',
-        link: '/engineering/ast/',
+        link: '/engineering/babel/ast.html',
         activeMatch: '^/engineering/'
       },
       // {

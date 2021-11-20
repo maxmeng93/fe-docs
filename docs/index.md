@@ -5,7 +5,7 @@ heroAlt: Logo
 heroText: 前端小册
 tagline: 不积跬步无以至千里
 actionText: Get Started
-actionLink: /engineering/ast/
+actionLink: /engineering/babel/ast.html
 # features:
 #   - title: Simplicity First
 #     details: Minimal setup with markdown-centered project structure helps you focus on writing.
