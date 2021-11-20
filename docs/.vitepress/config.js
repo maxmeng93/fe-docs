@@ -32,14 +32,11 @@ module.exports = {
     sidebar: {
       '/engineering/': [
         {
-          text: 'AST',
-          link: '/engineering/ast/'
-        },
-        {
-          text: 'babel',
+          text: 'Babel',
           children: [
-            { text: 'babel7小抄', link: '/engineering/babel/' },
-            { text: '写一个 Babel 插件', link: '/engineering/babel/create_plugin' },
+            { text: 'Babel系列包介绍和最小化配置', link: '/engineering/babel/' },
+            { text: '抽象语法树AST和Bable原理', link: '/engineering/babel/ast' },
+            { text: '学习写一个简单的Babel插件', link: '/engineering/babel/create_plugin' },
           ]
         },
         // {

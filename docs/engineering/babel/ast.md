@@ -152,48 +152,39 @@ interface Node {
 
 生成 AST 分为两个阶段，分别是词法分析（Lexical Analysis）和语法分析（Syntactic Analysis）。
 
-### 词法分析
+### 词法分析/扫描（Scanning）
 
-词法分析阶段把字符串形式的代码转换为 tokens（词法单元）流。
-你可以把令牌看作是一个扁平的语法片段数组。
+词法分析阶段从左向右逐行扫描源程序的字符，识别出各个单词，确定单词的类型，将识别出的单词转换成统一的词法单元（token）形式。
 
-```js
-a + b;
-```
+token：<种别码，属性值>
+| 单词类型 | 种别 | 种别码 |
+| -------- | -------------------------------------------------------------------- | :--------------------------: |
+| 关键字 | if、else、then、... | 一词一码 |
+| 标识符 | 变量名、方法名、... | 多词一码 |
+| 常量 | 数字、字符串、布尔值 | 一型一码 |
+| 运算法 | 算术（+ - \* / ++ --）<br> 关系（> < == != >= <=）<br>逻辑（& \| ~） | 一词一码 <br>或<br> 一型一码 |
+| 界限符 | ; () = {} | 一词一码 |
+
+举个例子: `a + b`, 这段程序通常会被分解成为下面这些词法单元: `a`、`+`、`b`，空格是否被当成此法单元，取决于空格在这门语言中的意义。
+
+下面的代码就是利用[词法分析网站](https://esprima.org/demo/parse.html)解析 `a + b` 后得到的词法单元数组（toekns）。
 
 ```js
 [
-  { type: {}, value: 'a', start: 0, end: 1, loc: {} },
-  { type: {}, value: '+', start: 2, end: 3, loc: {} },
-  { type: {}, value: 'b', start: 4, end: 5, loc: {} },
+  { type: 'Identifier', value: 'a' },
+  { type: 'Punctuator', value: '+' },
+  { type: 'Identifier', value: 'b' },
 ];
 ```
 
-每一个 `type` 有一组属性来描述该令牌：
+对于词法分析感兴趣的同学可以阅读 `@babel/parser` 中的词法分析方法 [Tokenizer](https://github.com/babel/babel/blob/master/packages/babel-parser/src/tokenizer/index.js)。
 
-```js
-{
-  type: {
-    label: 'name',
-    keyword: undefined,
-    beforeExpr: false,
-    startsExpr: true,
-    rightAssociative: false,
-    isLoop: false,
-    isAssign: false,
-    prefix: false,
-    postfix: false,
-    binop: null,
-    updateContext: null
-  }
-}
-```
+### 语法分析（Parsing）
 
-### 语法分析
-
+语法分析器从词法分析器输出的 token 序列中识别出各类短语，并构造语法分析树。
 语法分析阶段会把一个令牌流转换成 AST 的形式。 这个阶段会使用令牌中的信息把它们转换成一个 AST 的表述结构，这样更易于后续的操作。
 
-![babel工作流](./babel.jpeg)
+![babel工作流](/images/babel/babel.jpeg)
 
 ## 参考资料
 
