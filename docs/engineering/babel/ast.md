@@ -181,7 +181,7 @@ interface Node {
 
 ### 语法分析（Parsing）
 
-语法分析器从词法分析器输出的 token 序列中识别出各类短语，并转换成 AST 的形式。 这个阶段会使用 token 中的信息把它们转换成一个 AST 的表述结构，这样更易于后续的操作。
+语法分析器从词法分析器输出的 token 序列中识别出各类短语，并转换成 AST 的形式。
 
 ## Babel 工作流程
 
@@ -199,7 +199,7 @@ Babel 工作流程分为三步：`Parse`、`Transform`、`Generator`。
 
 #### Visitors（访问者）
 
-在此过程中，Babel 会维护一个 `visitor` 对象，这里对象里定义了用于在 AST 中获取具体节点的方法。下面请看一个例子：
+Transform 阶段，Babel 会维护一个 `visitor` 对象，这里对象里定义了用于在 AST 中获取具体节点的方法。下面请看一个例子：
 
 ```js
 const visitor = {
@@ -269,9 +269,88 @@ const visitor = {
 
 #### State（状态）
 
+修改 AST 时还要考虑代码的状态。比如有以下的例子，我们要将 `square` 方法中的标识符 `n` 修改为 `x`，这时候不能直接使用 `Identifier` 访问者方法，否则会将方法外的其他同名的标识符一起修改掉。
+
+```js
+function square(n) {
+  return n * n;
+}
+
+const n = 1;
+```
+
+对于这种情况，可以使用 `FunctionDeclaration` 访问者方法，通过这个方法找到 `square` ，然后再深入递归查找递归查找。
+
+```js
+const updateParamNameVisitor = {
+  Identifier(path) {
+    if (path.node.name === this.paramName) {
+      path.node.name = 'x';
+    }
+  },
+};
+
+const visitor = {
+  FunctionDeclaration(path) {
+    const param = path.node.params[0];
+    const paramName = param.name;
+    param.name = 'x';
+
+    path.traverse({
+      Identifier(path) {
+        if (path.node.name === paramName) {
+          path.node.name = 'x';
+        }
+      },
+    });
+  },
+};
+```
+
 #### Scopes（作用域）
 
+JavaScript 支持词法作用域，在嵌套的代码块中可以创建出新的作用域。内部作用域可以访问外层作用域的变量、函数、类等，可以统一称这些为引用，而且内部作用域还可以创建和外层作用域同名的引用。因此，在修改 AST 时，必须注意引用的作用域。
+
+幸运的是，Babel 替我们维护了引用和作用域之间的关系，这种关系称之为：**绑定（binding）**。可以通过 `path.scope.bindings` 获取当前路径所属作用域内的所有引用的绑定关系。单个绑定看起来就像这样：
+
+```js
+{
+  identifier: node,
+  scope: scope,
+  path: path,
+  kind: 'var',
+
+  // 是否被引用
+  referenced: true,
+  // 引用数量
+  references: 3,
+  // 引用路径
+  referencePaths: [path, path, path],
+
+  constant: false,
+  constantViolations: [path]
+}
+```
+
+有了这些信息你就可以查找一个绑定的所有引用，并且知道这是什么类型的绑定(参数，定义等等)，查找它所属的作用域，或者拷贝它的标识符。 你甚至可以知道它是不是常量，如果不是，那么是哪个路径修改了它。
+
+```js
+// 源代码
+function log() {
+  let str = '11111';
+  str = '22222';
+  return str;
+}
+
+// 可以利用标识符的引用关系，这样转换代码
+function log() {
+  return '22222';
+}
+```
+
 ### Generator 生成
+
+经过上一步的 AST 修改后，需要将其再转换为代码，这时候就会用到 `@babel/generator`。
 
 ## 参考资料
 
