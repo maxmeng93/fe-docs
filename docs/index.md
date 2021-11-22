@@ -3,15 +3,21 @@ home: true
 heroImage: /images/logo.jpg
 heroAlt: Logo
 heroText: 前端小册
-tagline: 不积跬步无以至千里
+tagline: 构建自己的前端知识体系
 actionText: Get Started
-actionLink: /engineering/babel/ast.html
-# features:
-#   - title: Simplicity First
-#     details: Minimal setup with markdown-centered project structure helps you focus on writing.
-#   - title: Vue-Powered
-#     details: Enjoy the dev experience of Vue + webpack, use Vue components in markdown, and develop custom themes with Vue.
-#   - title: Performant
-#     details: VitePress generates pre-rendered static HTML for each page, and runs as an SPA once a page is loaded.
+actionLink: /article/babel/ast.html
+features:
+  - title: 前端工程化
+    # details:
+  - title: 框架原理
+    # details:
+  - title: 数据结构与算法
+    # details:
+  - title: 设计模式
+    # details:
+  - title: Nodejs
+    # details:
+  - title: TypeScript
+    # details:
 footer: Copyright © 2021-present MaxMeng
 ---

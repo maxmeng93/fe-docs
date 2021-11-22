@@ -15,46 +15,34 @@ module.exports = {
     lastUpdated: '最后更新时间',
     nav: [
       {
-        text: '首页',
-        link: '/'
+        text: '文章列表',
+        link: '/article/babel/ast.html',
+        activeMatch: '^/article/'
       },
-      {
-        text: '前端工程化',
-        link: '/engineering/babel/ast.html',
-        activeMatch: '^/engineering/'
-      },
-      // {
-      //   text: 'TypeScript',
-      //   link: '/typescript/',
-      //   activeMatch: '^/typescript/'
-      // }
     ],
     sidebar: {
-      '/engineering/': [
+      '/article/': [
         {
           text: 'Babel',
           children: [
-            { text: 'Babel系列包介绍和最小化配置', link: '/engineering/babel/' },
-            { text: '抽象语法树AST和Bable原理', link: '/engineering/babel/ast' },
-            { text: '学习写一个简单的Babel插件', link: '/engineering/babel/create_plugin' },
+            { text: 'Babel系列包介绍和最小化配置', link: '/article/babel/' },
+            { text: '抽象语法树AST和Bable原理', link: '/article/babel/ast' },
+            { text: '学习写一个简单的Babel插件', link: '/article/babel/create_plugin' },
           ]
         },
-        // {
-        //   text: 'webpack',
-        //   children: [
-        //     { text: 'webpack', link: '/engineering/webpack/' }
-        //   ]
-        // },
-        // {
-        //   text: 'eslint',
-        //   link: '/engineering/eslint/'
-        // },
-        // {
-        //   text: 'vite',
-        //   link: '/engineering/vite/'
-        // }
+        {
+          text: 'Vue',
+          children: [
+            { text: 'vue', link: '/article/vue/' }
+          ]
+        },
+        {
+          text: 'React',
+          children: [
+            { text: 'react', link: '/article/react/' }
+          ]
+        }
       ],
-      // '/typescript/': [],
     }
   }
 }
