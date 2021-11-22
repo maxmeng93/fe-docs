@@ -16,7 +16,7 @@ module.exports = {
     nav: [
       {
         text: '文章列表',
-        link: '/article/babel/ast.html',
+        link: '/article/babel/ast',
         activeMatch: '^/article/'
       },
     ],
@@ -25,7 +25,7 @@ module.exports = {
         {
           text: 'Babel',
           children: [
-            { text: 'Babel系列包介绍和最小化配置', link: '/article/babel/' },
+            { text: 'Babel系列包介绍和最小化配置', link: '/article/babel/use' },
             { text: '抽象语法树AST和Bable原理', link: '/article/babel/ast' },
             { text: '学习写一个简单的Babel插件', link: '/article/babel/create_plugin' },
           ]
@@ -33,13 +33,20 @@ module.exports = {
         {
           text: 'Vue',
           children: [
-            { text: 'vue', link: '/article/vue/' }
+            { text: '响应式原理', link: '/article/vue/reactive' }
           ]
         },
+        // {
+        //   text: 'React',
+        //   children: [
+        //     { text: 'react', link: '/article/react/' }
+        //   ]
+        // },
         {
-          text: 'React',
+          text: '手写代码',
           children: [
-            { text: 'react', link: '/article/react/' }
+            { text: 'throttle - 节流', link: '/article/code/throttle' },
+            { text: 'debounce - 防抖', link: '/article/code/debounce' },
           ]
         }
       ],
