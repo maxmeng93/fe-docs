@@ -11,8 +11,8 @@ module.exports = {
     docsDir: 'docs',
     docsBranch: 'master',
     editLinks: true,
-    editLinkText: '帮助改善此页面',
-    lastUpdated: '最后更新时间',
+    editLinkText: '为本文纠错',
+    lastUpdated: '上次更新',
     nav: [
       {
         text: '文章列表',
@@ -24,6 +24,7 @@ module.exports = {
       '/article/': [
         {
           text: 'Babel',
+          collapsable: true,
           children: [
             { text: 'Babel系列包介绍和最小化配置', link: '/article/babel/use' },
             { text: '抽象语法树AST和Bable原理', link: '/article/babel/ast' },
@@ -32,23 +33,41 @@ module.exports = {
         },
         {
           text: 'Vue',
+          collapsable: true,
           children: [
-            { text: '响应式原理', link: '/article/vue/reactive' }
+            // { text: '组件渲染', link: '/article/vue/render' },
+            // { text: '组件更新', link: '/article/vue/update' },
+            { text: '生命周期', link: '/article/vue/lifecycle' },
+            // { text: '响应式原理', link: '/article/vue/reactive' },
           ]
         },
         // {
         //   text: 'React',
+        //   collapsable: true,
         //   children: [
         //     { text: 'react', link: '/article/react/' }
         //   ]
         // },
         {
           text: '手写代码',
+          collapsable: true,
           children: [
             { text: 'throttle - 节流', link: '/article/code/throttle' },
             { text: 'debounce - 防抖', link: '/article/code/debounce' },
           ]
-        }
+        },
+        // {
+        //   text: '设计模式',
+        //   collapsable: true,
+        //   children: [
+        //     { text: '工厂模式', link: '/article/design-pattern/factory' },
+        //     { text: '单例模式', link: '/article/design-pattern/singleton' },
+        //     { text: '策略模式', link: '/article/design-pattern/strategy' },
+        //     { text: '发布订阅模式', link: '/article/design-pattern/observer' },
+        //     { text: '访问者模式', link: '/article/design-pattern/visitor' },
+        //     { text: '代理模式', link: '/article/design-pattern/proxy' },
+        //   ]
+        // }
       ],
     }
   }
