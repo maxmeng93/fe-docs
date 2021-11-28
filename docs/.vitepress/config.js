@@ -38,7 +38,7 @@ module.exports = {
             // { text: '组件渲染', link: '/article/vue/render' },
             // { text: '组件更新', link: '/article/vue/update' },
             { text: '生命周期', link: '/article/vue/lifecycle' },
-            // { text: '响应式原理', link: '/article/vue/reactive' },
+            { text: '响应式原理', link: '/article/vue/reactive' },
           ]
         },
         // {
@@ -56,18 +56,26 @@ module.exports = {
             { text: 'debounce - 防抖', link: '/article/code/debounce' },
           ]
         },
-        // {
-        //   text: '设计模式',
-        //   collapsable: true,
-        //   children: [
-        //     { text: '工厂模式', link: '/article/design-pattern/factory' },
-        //     { text: '单例模式', link: '/article/design-pattern/singleton' },
-        //     { text: '策略模式', link: '/article/design-pattern/strategy' },
-        //     { text: '发布订阅模式', link: '/article/design-pattern/observer' },
-        //     { text: '访问者模式', link: '/article/design-pattern/visitor' },
-        //     { text: '代理模式', link: '/article/design-pattern/proxy' },
-        //   ]
-        // }
+        {
+          text: '设计模式',
+          collapsable: true,
+          children: [
+            { text: '设计模式', link: '/article/design-pattern/' },
+            { text: '工厂模式', link: '/article/design-pattern/factory' },
+            { text: '单例模式', link: '/article/design-pattern/singleton' },
+            { text: '策略模式', link: '/article/design-pattern/strategy' },
+            { text: '发布订阅模式', link: '/article/design-pattern/observer' },
+            { text: '访问者模式', link: '/article/design-pattern/visitor' },
+            { text: '代理模式', link: '/article/design-pattern/proxy' },
+          ]
+        },
+        {
+          text: '网络',
+          collapsable: true,
+          children: [
+            { text: 'HTTP 缓存', link: '/article/net/http-cache' }
+          ]
+        }
       ],
     }
   }
