@@ -61,11 +61,12 @@ module.exports = {
           collapsable: true,
           children: [
             { text: '设计模式', link: '/article/design-pattern/' },
-            { text: '工厂模式', link: '/article/design-pattern/factory' },
+            { text: '发布订阅模式', link: '/article/design-pattern/pub-sub' },
+            // { text: '工厂模式', link: '/article/design-pattern/factory' },
             { text: '单例模式', link: '/article/design-pattern/singleton' },
             { text: '策略模式', link: '/article/design-pattern/strategy' },
-            { text: '发布订阅模式', link: '/article/design-pattern/observer' },
-            { text: '访问者模式', link: '/article/design-pattern/visitor' },
+            { text: '观察者模式', link: '/article/design-pattern/observer' },
+            // { text: '访问者模式', link: '/article/design-pattern/visitor' },
             { text: '代理模式', link: '/article/design-pattern/proxy' },
           ]
         },
