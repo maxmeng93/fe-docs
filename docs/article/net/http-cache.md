@@ -6,7 +6,7 @@ title: HTTP 缓存
 
 HTTP 缓存作为客户端缓存的一种是 Web 性能优化的重要手段，了解其原理，对于前端应用开发维护和面试都有重要的意义。
 
-HTTP 缓存分为两种：强缓存和协商缓存。两种缓存可以同时存在，强缓存的优先级高于协商缓存。当执行强缓存时且命中缓存，则直接使用缓存数据，不在进行缓存协商。
+HTTP 缓存分为两种：强缓存和协商缓存。两种缓存可以同时存在，强缓存的优先级高于协商缓存。当执行强缓存时且命中缓存，则直接使用缓存数据，不在进行缓存协商。当多种缓存方案同时存在时，新标准（HTTP1.1）比旧标准（HTTP1.0）优先。
 
 ## 强缓存
 
@@ -99,14 +99,56 @@ sequenceDiagram
 
 #### Etag
 
-`Etag`：服务器为当前资源生成的唯一标识
+`Etag`：服务器为当前资源生成的唯一标识。该标识由服务端根据特定算法计算得出，会占用一部分服务器资源。
 
 `If-None-Match`：再次请求服务器时，请求头中将包含此字段，值为请求资源缓存的 `Etag` 的值。服务器接收到请求后，将此值与被请求资源的唯一标识符进行对比。
 
 - 值相同，说明资源无修改，则响应 header，返回状态码 304，浏览器从缓存服务器获取资源。
 - 值不同，说明资源被修改，则响应完整资源，返回状态码 200。
 
-`Etag` 的值是由服务器占用一部分资源使用算法计算出的，服务器资源比较宝贵，因此这种方案也很少使用了。
+## 缓存实践
+
+现代前端项目大都使用 Webpack 等工具打包，打包后的资源文件都带有 hash 值，因此只要将项目入口 index.html 设置为不缓存，其他带有 hash 的资源文件设置强缓存就行。只要文件内容发生变化，hash 会重新生成，资源文件的文件名发生了变化，浏览器自然会请求最新的文件，而不会使用缓存。
+
+### index.html 设置不缓存
+
+```bash
+# nginx 设置项目入口 index.html 不缓存
+location = /index.html {
+  add_header Cache-Control "no-cache, no-store";
+}
+```
+
+### webpack 打包配置
+
+1. 设置合理的文件 hash：Webpack `output.filename` 应使用 `contenthash` 方案。这种方案将根据资源内容创建出唯一 hash。当资源内容发生变化时，`[contenthash]` 也会发生变化。
+2. 将 webpack `runtime` 提取为单独的 chunk。
+3. 将第三方库提取为单独的 `vendor` chunk，因为它们很少频繁修改，提取为单独 chunk，有利于长期缓存。
+4. 设置 `moduleIds: 'deterministic'` 避免因模块解析顺序发生变化而导致文件 hash 值改变。
+
+```js
+module.exports = {
+  output: {
+    // 文件hash
+    filename: '[name].[contenthash].js',
+  },
+  optimization: {
+    moduleIds: 'deterministic',
+    // runtime 单独打包为一个 chunk
+    runtimeChunk: 'single',
+    splitChunks: {
+      cacheGroups: {
+        // 第三方包打包为 vendors chunk
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendors',
+          chunks: 'all',
+        },
+      },
+    },
+  },
+};
+```
 
 ## 不同刷新的请求执行过程
 
@@ -119,3 +161,4 @@ sequenceDiagram
 ## 参考
 
 - [HTTP 缓存机制](https://juejin.cn/post/6844903517702848526)
+- [Webpack 缓存](https://webpack.docschina.org/guides/caching/)
