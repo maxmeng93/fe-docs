@@ -43,3 +43,5 @@
 ## 参考
 
 - [设计模式六大原则](http://www.uml.org.cn/sjms/201211023.asp)
+- [JS 常用设计模式总结](https://fanerge.github.io/2017/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E6%80%BB%E7%BB%93.html)
+- [前端渣渣唠嗑一下前端中的设计模式](https://juejin.cn/post/6844904138707337229)
