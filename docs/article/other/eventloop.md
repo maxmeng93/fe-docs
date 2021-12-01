@@ -12,7 +12,7 @@
 
 - 微任务
 
-`Promise(.then/catch/finally)`、`process.nextTick`、`MutaionObserver`、`queueMicrotask(func)`（这个方法可以让 `func` 在微任务队列中执行）
+`Promise(.then/catch/finally)`、`process.nextTick`、`MutationObserver`、`queueMicrotask(func)`（这个方法可以让 `func` 在微任务队列中执行）
 
 ## 事件循环算法
 
@@ -37,5 +37,6 @@
 ## 参考
 
 - [事件循环：微任务和宏任务](https://zh.javascript.info/event-loop)
+- [微任务](https://zh.javascript.info/microtask-queue)
 - [setTimeout+Promise+Async 输出顺序](https://juejin.cn/post/7016298598883131423)
 - [这一次，彻底弄懂 JavaScript 执行机制](https://juejin.cn/post/6844903512845860872)
