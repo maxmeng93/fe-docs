@@ -54,6 +54,7 @@ module.exports = {
           children: [
             { text: 'throttle - 节流', link: '/article/code/throttle' },
             { text: 'debounce - 防抖', link: '/article/code/debounce' },
+            { text: 'curry - 柯里化', link: '/article/code/curry' },
           ]
         },
         {
@@ -68,6 +69,7 @@ module.exports = {
             { text: '观察者模式', link: '/article/design-pattern/observer' },
             // { text: '访问者模式', link: '/article/design-pattern/visitor' },
             { text: '代理模式', link: '/article/design-pattern/proxy' },
+            // { text: '装饰者模式', link: '/article/design-pattern/decorator' },
           ]
         },
         {
@@ -75,6 +77,13 @@ module.exports = {
           collapsable: true,
           children: [
             { text: 'HTTP 缓存', link: '/article/net/http-cache' }
+          ]
+        },
+        {
+          text: '其他',
+          collapsable: true,
+          children: [
+            { text: 'EventLoop', link: '/article/other/eventloop' }
           ]
         }
       ],
