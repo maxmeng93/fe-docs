@@ -55,6 +55,7 @@ module.exports = {
             { text: 'throttle - 节流', link: '/article/code/throttle' },
             { text: 'debounce - 防抖', link: '/article/code/debounce' },
             { text: 'curry - 柯里化', link: '/article/code/curry' },
+            { text: 'Promise 封装 Worker', link: '/article/code/worker' },
           ]
         },
         {
