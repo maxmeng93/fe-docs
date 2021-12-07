@@ -152,11 +152,11 @@ class Watcher {
 }
 ```
 
-源码中我们看到，Watcher 实现了渲染方法 \_render 和 Dep 的关联， 初始化 Watcher 的时候，打上 Dep.target 标识，然后调用 get 方法进行页面渲染。加上上文的 Data，目前 Data、Dep、Watcher 三者的关系如下：
+源码中我们看到，Watcher 实现了渲染方法 `_render` 和 Dep 的关联， 初始化 Watcher 的时候，打上 Dep.target 标识，然后调用 get 方法进行页面渲染。加上上文的 Data，目前 Data、Dep、Watcher 三者的关系如下：
 
 ![3](/images/vue/reactive/3.png)
 
-我们再拉通串一下整个流程：Vue 通过 defineProperty 完成了 Data 中所有数据的代理，当数据触发 get 查询时，会将当前的 Watcher 对象加入到依赖收集池 Dep 中，当数据 Data 变化时，会触发 set 通知所有使用到这个 Data 的 Watcher 对象去 update 视图。
+我们再拉通串一下整个流程：Vue 通过 `defineProperty` 完成了 Data 中所有数据的代理，当数据触发 get 查询时，会将当前的 Watcher 对象加入到依赖收集池 Dep 中，当数据 Data 变化时，会触发 set 通知所有使用到这个 Data 的 Watcher 对象去 update 视图。
 目前的整体流程如下：
 
 ![4](/images/vue/reactive/4.png)
@@ -219,7 +219,7 @@ Vue.prototype._update = function (vnode: VNode) {
 ![6](/images/vue/reactive/6.png)
 
 上图分析了 Vue 初始化到渲染 DOM 的整个过程，最后我们再分析一下，当数据变化时，Vue 又是怎么进行更新的？
-其实，在上图也能看出，在 Data 变化时，会调用 Dep.notify 方法，随即调用 Watcher 内部的 update 方法，此方法会将所有使用到这个 Data 的 Watcher 加入一个队列，并开启一个异步队列进行更新，最终执行 \_render 方法完成页面更新。
+其实，在上图也能看出，在 Data 变化时，会调用 Dep.notify 方法，随即调用 Watcher 内部的 update 方法，此方法会将所有使用到这个 Data 的 Watcher 加入一个队列，并开启一个异步队列进行更新，最终执行 `_render` 方法完成页面更新。
 整体的流程如下：
 
 ![7](/images/vue/reactive/7.png)
