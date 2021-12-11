@@ -19,6 +19,11 @@ module.exports = {
         link: '/article/babel/ast',
         activeMatch: '^/article/'
       },
+      {
+        text: 'leetcode',
+        link: '/leetcode/70',
+        activeMatch: '^/leetcode/'
+      }
     ],
     sidebar: {
       '/article/': [
@@ -86,6 +91,11 @@ module.exports = {
           children: [
             { text: 'EventLoop', link: '/article/other/eventloop' }
           ]
+        }
+      ],
+      '/leetcode': [
+        {
+          text: '70.爬楼梯', link: '/leetcode/70'
         }
       ],
     }
