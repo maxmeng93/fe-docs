@@ -21,7 +21,7 @@ module.exports = {
       },
       {
         text: 'leetcode',
-        link: '/leetcode/70',
+        link: '/leetcode/1.two-sum',
         activeMatch: '^/leetcode/'
       }
     ],
@@ -95,8 +95,23 @@ module.exports = {
       ],
       '/leetcode': [
         {
-          text: '70.爬楼梯', link: '/leetcode/70'
-        }
+          text: '数组',
+          children: [
+            {
+              text: '1.两数之和',
+              link: '/leetcode/1.two-sum'
+            }
+          ],
+        },
+        {
+          text: '动态规划',
+          children: [
+            {
+              text: '70.爬楼梯', link: '/leetcode/70.climbing-stairs'
+            }
+          ]
+        },
+
       ],
     }
   }
