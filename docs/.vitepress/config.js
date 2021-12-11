@@ -100,6 +100,10 @@ module.exports = {
             {
               text: '1.两数之和',
               link: '/leetcode/1.two-sum'
+            },
+            {
+              text: '88.合并两个有序数组',
+              link: '/leetcode/88.merge-sorted-array'
             }
           ],
         },
