@@ -104,6 +104,14 @@ module.exports = {
             {
               text: '88.合并两个有序数组',
               link: '/leetcode/88.merge-sorted-array'
+            },
+            {
+              text: '283.移动零',
+              link: '/leetcode/283.move-zeroes'
+            },
+            {
+              text: '448.找到所有数组中消失的数字',
+              link: '/leetcode/448.find-all-numbers-disappeared-in-an-array'
             }
           ],
         },
