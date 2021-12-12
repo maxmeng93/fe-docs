@@ -116,6 +116,15 @@ module.exports = {
           ],
         },
         {
+          text: '链表',
+          children: [
+            {
+              text: '21.合并两个有序链表',
+              link: '/leetcode/21.merge-two-sorted-lists'
+            }
+          ]
+        },
+        {
           text: '动态规划',
           children: [
             {
