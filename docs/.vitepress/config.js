@@ -121,6 +121,18 @@ module.exports = {
             {
               text: '21.合并两个有序链表',
               link: '/leetcode/21.merge-two-sorted-lists'
+            },
+            {
+              text: '83.删除链表中的重复元素',
+              link: '/leetcode/83'
+            },
+            {
+              text: '141.环形链表',
+              link: '/leetcode/141'
+            },
+            {
+              text: '142.环形链表 II',
+              link: '/leetcode/142'
             }
           ]
         },
