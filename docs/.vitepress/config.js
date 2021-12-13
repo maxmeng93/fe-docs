@@ -21,7 +21,7 @@ module.exports = {
       },
       {
         text: 'leetcode',
-        link: '/leetcode/1.two-sum',
+        link: '/leetcode/1',
         activeMatch: '^/leetcode/'
       }
     ],
@@ -97,51 +97,39 @@ module.exports = {
         {
           text: '数组',
           children: [
-            {
-              text: '1.两数之和',
-              link: '/leetcode/1.two-sum'
-            },
-            {
-              text: '88.合并两个有序数组',
-              link: '/leetcode/88.merge-sorted-array'
-            },
-            {
-              text: '283.移动零',
-              link: '/leetcode/283.move-zeroes'
-            },
-            {
-              text: '448.找到所有数组中消失的数字',
-              link: '/leetcode/448.find-all-numbers-disappeared-in-an-array'
-            }
+            { text: '1.两数之和', link: '/leetcode/1' },
+            { text: '88.合并两个有序数组', link: '/leetcode/88' },
+            { text: '283.移动零', link: '/leetcode/283' },
+            { text: '448.找到所有数组中消失的数字', link: '/leetcode/448' }
           ],
         },
         {
           text: '链表',
           children: [
-            {
-              text: '21.合并两个有序链表',
-              link: '/leetcode/21.merge-two-sorted-lists'
-            },
-            {
-              text: '83.删除链表中的重复元素',
-              link: '/leetcode/83'
-            },
-            {
-              text: '141.环形链表',
-              link: '/leetcode/141'
-            },
-            {
-              text: '142.环形链表 II',
-              link: '/leetcode/142'
-            }
+            { text: '21.合并两个有序链表', link: '/leetcode/21' },
+            { text: '83.删除链表中的重复元素', link: '/leetcode/83' },
+            { text: '141.环形链表', link: '/leetcode/141' },
+            { text: '142.环形链表 II', link: '/leetcode/142' },
+            { text: '160.相交链表', link: '/leetcode/160' },
+            { text: '206.反转链表', link: '/leetcode/206' },
+            { text: '234.回文链表', link: '/leetcode/234' },
           ]
+        },
+        {
+          text: '树',
+          children: [
+            { text: '94.二叉树的中序遍历', link: '/leetcode/94' },
+            { text: '101.对称二叉树', link: '/leetcode/101' },
+            { text: '104.二叉树的最大深度', link: '/leetcode/104' },
+            { text: '144.二叉树的前序遍历', link: '/leetcode/144' },
+            { text: '145.二叉树的后序遍历', link: '/leetcode/145' },
+            { text: '226.翻转二叉树', link: '/leetcode/226' },
+          ],
         },
         {
           text: '动态规划',
           children: [
-            {
-              text: '70.爬楼梯', link: '/leetcode/70.climbing-stairs'
-            }
+            { text: '70.爬楼梯', link: '/leetcode/70' },
           ]
         },
 
