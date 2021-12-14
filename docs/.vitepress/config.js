@@ -100,7 +100,8 @@ module.exports = {
             { text: '1.两数之和', link: '/leetcode/1' },
             { text: '88.合并两个有序数组', link: '/leetcode/88' },
             { text: '283.移动零', link: '/leetcode/283' },
-            { text: '448.找到所有数组中消失的数字', link: '/leetcode/448' }
+            { text: '448.找到所有数组中消失的数字', link: '/leetcode/448' },
+            { text: '704.二分查找', link: '/leetcode/704' },
           ],
         },
         {
@@ -113,6 +114,7 @@ module.exports = {
             { text: '160.相交链表', link: '/leetcode/160' },
             { text: '206.反转链表', link: '/leetcode/206' },
             { text: '234.回文链表', link: '/leetcode/234' },
+            { text: '876.链表的中间结点', link: '/leetcode/876' },
           ]
         },
         {
@@ -132,7 +134,12 @@ module.exports = {
             { text: '70.爬楼梯', link: '/leetcode/70' },
           ]
         },
-
+        {
+          text: '排序',
+          children: [
+            { text: '912.排序数组', link: '/leetcode/912' }
+          ]
+        },
       ],
     }
   }
