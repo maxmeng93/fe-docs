@@ -61,6 +61,7 @@ module.exports = {
             { text: 'debounce - 防抖', link: '/article/code/debounce' },
             { text: 'curry - 柯里化', link: '/article/code/curry' },
             { text: 'Promise 封装 Worker', link: '/article/code/worker' },
+            { text: 'Promise', link: '/article/code/promise' },
           ]
         },
         {
