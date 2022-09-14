@@ -23,6 +23,11 @@ module.exports = {
         text: 'leetcode',
         link: '/leetcode/1',
         activeMatch: '^/leetcode/'
+      },
+      {
+        text: 'three.js',
+        link: '/threejs/camera',
+        activeMatch: '^/threejs/'
       }
     ],
     sidebar: {
@@ -142,6 +147,9 @@ module.exports = {
           ]
         },
       ],
+      '/threejs': [
+        { text: 'Camera', link: '/threejs/camera' },
+      ]
     }
   }
 }
